@@ -1,0 +1,11 @@
+-	Here is the bash code to install SaltRNet:
+# Clone the SaltRNet repository from Github
+git clone https://github.com/debora-salles/SaltRNet.git
+# Enter the SaltRNet directory
+cd SaltRNet
+
+# Install the dependencies
+pip install -r requirements.txt
+
+# Test the installation
+python -m unittest discover -v
