@@ -1,0 +1,26 @@
+
+import subprocess
+
+def predict_solubility_stability(fasta_file_path):
+    """
+    target: Predict solubility and stability scores for a protein using SaltRannet and Propka command-line tools.
+    
+    Parameters:
+    fasta_file_path (str): Path for the fasta file containing the protein sequence.
+    
+    Returns:
+    None
+    
+    Output files:
+    sol.txt: File containing solubility score predicted by SaltRNet.
+    stab.txt: File containing stability score predicted by Propka.
+    """
+    # Predict solubility using SaltRNet 
+    sol_output = subprocess.run(['SaltRNet', fasta_file_path], capture_output=True, text=True)
+    with open("sol.txt", "w") as f:
+        f.write(sol_output.stdout)
+        
+    # Predict stability using Propka
+    stab_output = subprocess.run(['propka31', fasta_file_path], capture_output=True, text=True)
+    with open("stab.txt", "w") as f:
+        f.write(stab_output.stdout)
